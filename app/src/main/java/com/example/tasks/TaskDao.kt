@@ -16,8 +16,8 @@ interface TaskDao {
     suspend fun delete(task: Task) // deletes Task with matching taskId
 
     // Query can be used to write pure SQL statements and assign them to a function call
-    @Query("SELECT * FROM task_table WHERE taskId = :taskId")
-    fun get(taskId: Long): LiveData<Task>
+    @Query("SELECT * FROM task_table WHERE taskId = :key")
+    fun get(key: Long): LiveData<Task>
 
     @Query("SELECT * FROM task_table ORDER BY taskId DESC")
     fun getAll(): LiveData<List<Task>>
