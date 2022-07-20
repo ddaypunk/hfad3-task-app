@@ -18,9 +18,9 @@ interface TaskDao {
     fun getAll(): LiveData<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(task: Task): Long // This method could also take a list of Tasks if desired and room will handle them
+    suspend fun insert(task: Task) // This method could also take a list of Tasks if desired and room will handle them
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(task: Task) // updates Task with matching taskId
 
     @Delete
