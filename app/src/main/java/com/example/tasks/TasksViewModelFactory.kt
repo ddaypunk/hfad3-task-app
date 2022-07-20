@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 
 class TasksViewModelFactory(private val dao: TaskDao): ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TasksViewModel::class.java)) return TasksViewModel(dao) as T
         throw IllegalArgumentException("Unknown ViewModel")
     }
