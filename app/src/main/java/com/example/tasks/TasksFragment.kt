@@ -15,7 +15,7 @@ class TasksFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentTasksBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -31,6 +31,7 @@ class TasksFragment : Fragment() {
         val factory = TasksViewModelFactory(dao)
         val viewModel = ViewModelProvider(this, factory).get(TasksViewModel::class.java)
         binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         return view
     }
